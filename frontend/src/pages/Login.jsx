@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../components/AuthContext";
 
+const api = import.meta.env.VITE_API_URL;
 const Login = () => {
 
   const {user,setUser} = useContext(AuthContext)
@@ -22,12 +23,12 @@ const Login = () => {
             },
             body:JSON.stringify(userDetails)
         }
-        const res = await fetch("http://localhost:4000/api/login",options)
+        const res = await fetch(api+"/api/login",options)
         const data  = await res.json();
         if(res.status==201){
           localStorage.setItem("token",data.token);
           setUser(data.user)
-          if(user.role=="admin"){
+          if(data.user.role=="admin"){
               navigate("/admin");
           }else{
 navigate("/products");

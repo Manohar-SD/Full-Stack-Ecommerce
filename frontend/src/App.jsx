@@ -23,7 +23,7 @@ import AuthContext from "./components/AuthContext"
 import { useEffect, useState } from "react"
 import { FaTrophy } from "react-icons/fa"
 import Footer from "./components/Footer"
-// const api = import.meta.env.VITE_API_URL;
+const api = import.meta.env.VITE_API_URL;
 function App() {
 
 
@@ -37,7 +37,7 @@ const token = localStorage.getItem("token");
 
   const isUser = async()=>{
    try{
-     const res = await fetch("http://localhost:4000/api/me",{credentials:"include"});
+     const res = await fetch(api+"/api/me",{credentials:"include"});
      console.log(res)
     if(res.status==200){
       const user =  await res.json();

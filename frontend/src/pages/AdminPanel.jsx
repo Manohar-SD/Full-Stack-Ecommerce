@@ -3,6 +3,8 @@ import ProductRow from "../components/ProductRow";
 import { useNavigate } from "react-router-dom";
 import OrdersTable from "../components/OrdersTablex";
 import EmptyState from "../components/EmptyState";
+
+const api = import.meta.env.VITE_API_URL;
 const AdminPanel = () => {
 
 const [products,setProducts] = useState([]);
@@ -22,7 +24,7 @@ const [users,setUsers] = useState([]);
             const options = {
                 credentials:"include"
             }
-            const res =await fetch("http://localhost:4000/api/orders/",options);
+            const res =await fetch(api+"/api/orders/",options);
         const data = await res.json()
         setOrders(data);
         
@@ -35,7 +37,7 @@ const [users,setUsers] = useState([]);
     }
 
     const getProducts = async () => {
-    const url = "http://localhost:4000/api/products";
+    const url = api+"/api/products";
     const res = await fetch(url);
     const data = await res.json();
     setProducts(data);
@@ -44,7 +46,7 @@ const [users,setUsers] = useState([]);
   const options = {
                 credentials:"include"
             }
-    const url = "http://localhost:4000/api/users";
+    const url = api+"/api/users";
     const res = await fetch(url,options);
     const data = await res.json();
     setUsers(data);
@@ -69,7 +71,7 @@ const onStatusChange = async(obj)=>{
 
   }
 
-  await fetch(`http://localhost:4000/api/orders/${obj.id}`,options);
+  await fetch(api+`/api/orders/${obj.id}`,options);
   fetchOrders();
   
 }
@@ -85,7 +87,7 @@ const deleteProduct = async(id)=>{
   method:"DELETE",
   credentials: "include",
  } 
- const res = await fetch(`http://localhost:4000/api/products/${id}`,options);
+ const res = await fetch(api+`/api/products/${id}`,options);
  if(res.status==200)
  {
   navigate("/admin");

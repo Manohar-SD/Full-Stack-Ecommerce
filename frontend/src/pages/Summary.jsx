@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+const api = import.meta.env.VITE_API_URL;
+const razorKey = import.meta.env.RAZOR_KEY_ID;
 const Summary = () => {
   const navigate = useNavigate();
 
@@ -37,10 +39,10 @@ const Summary = () => {
         return ;
       }
 
-       const resp = await fetch("http://localhost:4000/api/orders/pay",{credentials:'include',method:"POST"});
+       const resp = await fetch(api+"/api/orders/pay",{credentials:'include',method:"POST"});
        const data = await resp.json();
     const options = {
-      "key": "rzp_test_\ScTR7ite04rjsr", // Enter the Key ID generated from the Dashboard 
+      "key": razorKey, // Enter the Key ID generated from the Dashboard 
       "currency": "INR",
       "name": `${shippingAddress.fullName}`,
       "description": "Test Transaction",
@@ -61,7 +63,7 @@ const Summary = () => {
 
         
     }
-    const res = await fetch("http://localhost:4000/api/orders/",options);
+    const res = await fetch(api+"/api/orders/",options);
      const data = await res.json();
 console.log(data);
 console.log(data);
@@ -70,7 +72,7 @@ console.log(data);
     navigate("/myorders");
   } else {
     // show error
-    alert("super error")
+    alert("Payment Error")
   }
       }
       ,

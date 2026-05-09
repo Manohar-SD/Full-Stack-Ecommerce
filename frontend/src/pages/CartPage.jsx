@@ -5,6 +5,7 @@ import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import EmptyState from "../components/EmptyState";
 
+const api = import.meta.env.VITE_API_URL;
 
 import { useContext } from "react";
 import AuthContext from "../components/AuthContext";
@@ -34,7 +35,7 @@ const getCartItems = async()=>{
     const options ={
       credentials:"include",
     }
-    const res = await fetch("http://localhost:4000/api/carts",options);
+    const res = await fetch(api+"/api/carts",options);
      const data = await res.json();
      console.log(data);
      setCartItems(data);
@@ -50,7 +51,7 @@ const getCartItems = async()=>{
       },
       body:JSON.stringify({action:action})
     }
-    const res = await fetch(`http://localhost:4000/api/carts/update-quantity/${productId}`,options);
+    const res = await fetch(api+`/api/carts/update-quantity/${productId}`,options);
     if(res.status==201){
       getCartItems()
     }
@@ -69,7 +70,7 @@ const removeItem = async(productId)=>{
       method:"DELETE",
       credentials:"include"
     }
-    const res = await fetch(`http://localhost:4000/api/carts/${productId}`,options);
+    const res = await fetch(api+`/api/carts/${productId}`,options);
     if(res.status==201){
       getCartItems()
     }

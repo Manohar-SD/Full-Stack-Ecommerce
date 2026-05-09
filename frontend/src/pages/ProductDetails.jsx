@@ -7,6 +7,7 @@ import ReviewList from "../components/ReviewsList"
 import { useContext } from "react";
 import AuthContext from "../components/AuthContext";
 
+const api = import.meta.env.VITE_API_URL;
 const ProductDetails = () => {
 const {id }= useParams();
 
@@ -28,14 +29,14 @@ const decreaseQty = ()=>{
   }
 }
   const getDetails = async()=>{
-        const res = await  fetch(`http://localhost:4000/api/products/${id}`)
+        const res = await  fetch(api+`/api/products/${id}`)
         const data = await res.json();
       setProduct(data);
 
     }
 useEffect(()=>{
   const getDetails = async()=>{
-        const res = await  fetch(`http://localhost:4000/api/products/${id}`)
+        const res = await  fetch(api+`/api/products/${id}`)
         const data = await res.json();
       setProduct(data);
 
@@ -54,7 +55,7 @@ const addToCart =async ()=>{
     quantity,
     price:product.price
   }
-  const url = "http://localhost:4000/api/carts";
+  const url = api+"/api/carts";
   const options = {
     method:"POST",
     headers:{

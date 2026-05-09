@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 
+const api = import.meta.env.VITE_API_URL;
 const EditProduct = ()=>{
     const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const EditProduct = ()=>{
     
     useEffect(()=>{
     const getDetails = async()=>{
-        const res = await  fetch(`http://localhost:4000/api/products/${id}`)
+        const res = await  fetch(api+`/api/products/${id}`)
         const data = await res.json();
       setProductDetails(data);
 

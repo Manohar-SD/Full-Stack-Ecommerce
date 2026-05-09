@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
 
+const api = import.meta.env.VITE_API_URL;
 const AddProduct = ()=>{
     const navigate = useNavigate();
     const [productDetails,setProductDetails] = useState({
@@ -21,7 +22,7 @@ const AddProduct = ()=>{
             credentials: "include",
             body:JSON.stringify(productDetails)
         }
-        const res = await fetch("http://localhost:4000/api/products",options);
+        const res = await fetch(api+"/api/products",options);
         if(res.status==201){
             navigate("/admin");
         }

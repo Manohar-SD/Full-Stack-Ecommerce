@@ -4,6 +4,8 @@ import OrderCard from "../components/OrderCard";
 import OrdersTable from "../components/OrdersTablex";
 import EmptyState from "../components/EmptyState";
 import Loader from "../components/Loader";
+
+const api = import.meta.env.VITE_API_URL;
 const OrdersPage = ()=>{
     const [orders,setOrders] = useState([]);
     const [loading,setLoading] = useState(true);
@@ -15,7 +17,7 @@ const OrdersPage = ()=>{
             const options = {
                 credentials:"include"
             }
-            const res =await fetch("http://localhost:4000/api/orders/myorders",options);
+            const res =await fetch(api+"/api/orders/myorders",options);
         const data = await res.json()
         setOrders(data);
         

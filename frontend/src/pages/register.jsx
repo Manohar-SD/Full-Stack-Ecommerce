@@ -18,11 +18,11 @@ const {user,setUser} = useContext(AuthContext)
             },
             body:JSON.stringify(userDetails)
         }
-        const res = await fetch("http://localhost:4000/api/register",options)
+        const res = await fetch("https://full-stack-ecommerce-backend-33fz.onrender.com/api/register",options)
         const data = await res.json();
         if(res.status==201){
           setUser(data.user)
-           if(user.role=="admin"){
+           if(data.user.role=="admin"){
               navigate("/admin");
           }else{
 navigate("/products");

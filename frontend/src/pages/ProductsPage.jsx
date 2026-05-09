@@ -6,6 +6,7 @@ import ProductBanner from "../components/ProductBanner";
 import EmptyState from "../components/EmptyState";
 import Loader from "../components/Loader";
 
+const api = import.meta.env.VITE_API_URL;
 const ProductPage = ()=>{
 
 
@@ -18,7 +19,7 @@ const ProductPage = ()=>{
     useEffect(()=>{
         const getProducts = async()=>{
           setLoading(true)
-            const url = `http://localhost:4000/api/products?search=${search}`;
+            const url = api+`/api/products?search=${search}`;
             const res = await fetch(url);
             const data = await res.json();
             setProducts(data);
