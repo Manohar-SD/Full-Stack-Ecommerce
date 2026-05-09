@@ -6,14 +6,14 @@ const Cart = require("../Models/Cart");
 
 const crypto = require("crypto");
 const router = require("express").Router();
-
+require("dotenv").config();
 
 const Razorpay = require("razorpay");
 const authMiddleware = require("../middleware/authMiddleware");
 
 const instance = new Razorpay({
-  key_id: 'rzp_test_ScTR7ite04rjsr',
-  key_secret: 'YDKO1tYkc0YYICaMcWgkRMZJ',
+  key_id: process.env.RAZOR_ID,
+  key_secret: process.env.RAZOR_SECRET,
 });
 
 const secureAuth = [

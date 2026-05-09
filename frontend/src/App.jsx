@@ -23,7 +23,7 @@ import AuthContext from "./components/AuthContext"
 import { useEffect, useState } from "react"
 import { FaTrophy } from "react-icons/fa"
 import Footer from "./components/Footer"
-
+// const api = import.meta.env.VITE_API_URL;
 function App() {
 
 
