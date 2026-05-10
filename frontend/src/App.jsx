@@ -12,10 +12,10 @@ import OrdersPage from "./pages/OrdersPage"
 import ShippingPage from "./pages/ShippingPage"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
-import Summary from "./pages/summary"
+import Summary from "./pages/Summary"
 import Navbar from "./components/Navbar"
 
-import './app.css';
+import './App.css';
 
 import { useLocation } from "react-router-dom"
 import AdminProtectedRoute from "./components/AdminProtectedRoute"
