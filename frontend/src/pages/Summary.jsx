@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const api = import.meta.env.VITE_API_URL;
-const razorKey = import.meta.env.RAZOR_KEY_ID;
+const razorKey = import.meta.env.VITE_RAZORPAY_KEY;
 const Summary = () => {
   const navigate = useNavigate();
 
