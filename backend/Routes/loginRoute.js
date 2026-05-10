@@ -16,9 +16,9 @@ router.post("/",async(req,res)=>{
     const token =  jwt.sign(payload,process.env.PASSPORT_SECRET);
       const {email,role} = user;
     res.cookie("token",token,{
-      httpOnly:false,
-      secure:false,
-      sameSite:"lax"
+      httpOnly:true,
+      secure:true,
+      sameSite:"None"
     }).status(201).json({messge:"Login Succesful",token,user:{name,email,role}});
   }catch(error){
     res.json({msg:"User Not Found"});
