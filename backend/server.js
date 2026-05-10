@@ -25,7 +25,10 @@ const asyncHandler = require("./utils/asyncHandler");
 
 app.use(cookieParser());
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://agent-6a000753fb2f9f086--frabjous-pudding-e62ab0.netlify.app"
+   ],
     credentials:true
 })); 
 
