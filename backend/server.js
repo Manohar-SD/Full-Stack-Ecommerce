@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(cors({
     origin: [
       "http://localhost:5173",
-      "https://agent-6a001412196287415--frabjous-pudding-e62ab0.netlify.app"
+      "https://agent-6a0017b984a79e229--frabjous-pudding-e62ab0.netlify.app"
    ],
     credentials:true
 })); 
